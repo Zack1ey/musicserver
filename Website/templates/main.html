@@ -292,10 +292,8 @@
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <div class="header">
-    <div class="header-title">♪ Music App</div>
+    <div class="header-title">Web Music</div>
     <div class="header-right">
       <span>Logged in as: <strong>{{ user_name }}</strong></span>
       <a href="/logout" class="logout-link">Logout</a>
@@ -303,16 +301,12 @@
   </div>
 
   <div class="page">
-
-    <!-- ── 1. USER AREA ── -->
     <div class="section">
       <div class="section-title">User Information</div>
       <p style="font-size:0.9rem;">
         Welcome back, <strong>{{ user_name }}</strong>. You are logged in and managing your music subscriptions.
       </p>
     </div>
-
-    <!-- ── 2. SUBSCRIPTION AREA ── -->
     <div class="section">
       <div class="section-title">
         My Subscriptions
@@ -340,35 +334,34 @@
           {% endfor %}
         {% else %}
           <div class="empty-state" id="empty-subs">
-            No subscriptions yet. Use the search below to find and subscribe to music.
+            No subscriptions yet.
           </div>
         {% endif %}
       </div>
     </div>
 
-    <!-- ── 3. QUERY AREA ── -->
     <div class="section">
       <div class="section-title">Search Music</div>
       <p style="font-size:0.8rem; color:#666; margin-bottom:14px;">
-        Fill in one or more fields and click Query. Multiple fields are combined with AND.
+        Search for song name/artist/year below.
       </p>
 
       <div class="query-row">
         <div class="query-field">
           <label for="q-title">Title</label>
-          <input type="text" id="q-title" placeholder="e.g. Bad Blood" />
+          <input type="text" id="q-title"/>
         </div>
         <div class="query-field">
           <label for="q-artist">Artist</label>
-          <input type="text" id="q-artist" placeholder="e.g. Taylor Swift" />
+          <input type="text" id="q-artist"/>
         </div>
         <div class="query-field">
           <label for="q-album">Album</label>
-          <input type="text" id="q-album" placeholder="e.g. Fearless" />
+          <input type="text" id="q-album"/>
         </div>
         <div class="query-field">
           <label for="q-year">Year</label>
-          <input type="text" id="q-year" placeholder="e.g. 1974" />
+          <input type="text" id="q-year"/>
         </div>
       </div>
 
@@ -380,10 +373,9 @@
       <div id="results-area"></div>
     </div>
 
-  </div><!-- end .page -->
-
+  </div>
   <script>
-    // ── QUERY ──────────────────────────────────────────────────────────
+    // search for a song
     async function runQuery() {
       const title  = document.getElementById('q-title').value.trim();
       const artist = document.getElementById('q-artist').value.trim();
@@ -459,7 +451,7 @@
       document.getElementById('results-area').innerHTML = '';
     }
 
-    // ── SUBSCRIBE ──────────────────────────────────────────────────────
+    // Subcribe to a song
     async function addSubscription(song, btn) {
       btn.disabled = true;
       btn.textContent = 'Adding...';
@@ -519,7 +511,7 @@
       updateSubCount(1);
     }
 
-    // ── REMOVE ─────────────────────────────────────────────────────────
+    // Unsub from a song
     async function removeSubscription(titleAlbum, btn) {
       if (!confirm('Remove this subscription?')) return;
       btn.disabled = true;
@@ -577,7 +569,7 @@
       }
     }
 
-    // ── MESSAGE ────────────────────────────────────────────────────────
+    // Message
     function showMsg(text, type) {
       const old = document.querySelector('.msg');
       if (old) old.remove();
