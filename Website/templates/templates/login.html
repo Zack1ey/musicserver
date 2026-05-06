@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 40px 16px;
+      color: #222;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    .box {
+      background: #fff;
+      border: 2px solid #999;
+      max-width: 380px;
+      margin: 0 auto;
+      padding: 28px 32px;
+    }
+
+    .box h2 {
+      margin: 0 0 20px 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      font-weight: bold;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 7px 8px;
+      border: 1px solid #aaa;
+      font-size: 0.95rem;
+      font-family: Georgia, serif;
+      background: #fafafa;
+      box-sizing: border-box;
+    }
+
+    .field input:focus {
+      outline: 2px solid #555;
+      background: #fff;
+    }
+
+    .error {
+      background: #fff3f3;
+      border: 1px solid #cc0000;
+      color: #cc0000;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 9px;
+      background: #333;
+      color: #fff;
+      border: none;
+      font-size: 0.95rem;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .btn:hover { background: #555; }
+
+    .link-row {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .link-row a {
+      color: #0044cc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">Web Music</div>
+
+  <div class="box">
+    <h2>Login</h2>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="/login">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <div class="link-row">
+      New user? <a href="/register">Register here</a>
+    </div>
+  </div>
+
+</body>
+</html>
